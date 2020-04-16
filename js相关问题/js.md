@@ -1,11 +1,14 @@
 #### ? 问题
     this指向
+    定时器中this指向？定时器在Vue中应用有没有什么问题？
     数据类型？object为什么是复合数据类型？
     如何检测数据类型？
     关于数据类型转换，字符串和数组如何进行转换？
     undefined和null区别？
     什么时候用==，什么时候用===？
     怎么判断一个对象是{}？ 
+    闭包？
+    
 
 ##### 数据类型
     String Number Boolean Undefined Null（前面五种都是简单或是基本数据类型） Object(复合数据类型)
@@ -41,9 +44,9 @@
 
 
 ##### 数据类型检测
-    1 typeof 
+    1   typeof 
         返回值是小写的，number,string,function,boolean,undefined,object
-    2 
+    2   
 ##### 字符串和数组之间相互转换
     1 数组转换成字符串
         1 join
@@ -168,3 +171,45 @@
         值只有一个null，是一个对象
         typeof(null) ,是一个对象
     按规定null == undefined ,但是null !== undefined
+##### 闭包
+    是指有权访问另一个函数作用域的变量的函数
+##### 定时器
+    setInterval
+        间隔型定时器    每隔一段时间执行一段代码，代码一般会重复执行
+        语法    setInterval(函数，时间间隔) setInterval(fn,20) 每隔20毫秒执行函数fn
+        定时器开启的时候，内部执行的函数不是立即执行的，要等待第一次时间间隔
+    
+    clearInterval
+        清除定时器
+        定期器开启的时候会返回一个数值作为这个定时器的编号
+        关闭定时器， clearInterval(定时器的编号)    当开启定时器时将返回的编号存储到变量中，清除时，只需要找到这个变量就可以了。
+
+    setTimeout()
+        延迟性定时器，  每隔一段时间执行一段代码（只执行一次）
+        语法    setTimeout(函数，时间间隔)  setInterval(fn, 20) 等待20ms执行一段函数
+
+    clearTimeout
+    当我们需要隔一段时间再执行一段代码，或者每隔一段时间执行一段代码的时候，需要使用定时器
+
+    关于定时器中this问题：
+        在setInterval和setTimeout中传入函数时，函数中的this会指向window对象
+        在setTimeout()调用的代码运行与所在函数完全分离的执行环境上，这回导致这些代码中包含的this关键字会指向window（或全局）对象；
+    如何解决定时器中this指向问题：
+        1 将当前对象的this存为一个变量，定时器内的函数利用闭包来访问这个变量
+            var num = 0;
+            function Obj(){
+                var that = this;
+                this.num = 1;
+                this.getNum = function(){
+                    console.log(this.num);
+                }
+                this.getNumLater = function(){
+                    setTimeout(function(){
+                        console.log(that.num); // 利用闭包访问that，that是伊特指向obj的指针
+                    },1000)
+                }
+            }
+            var obj = new Obj;
+            obj.getNum();   // 1
+            obj.getNumLater(); //1
+
