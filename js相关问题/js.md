@@ -151,15 +151,7 @@
 				console.log(obj[a]) //a为obj的键名，obj为对象，打出的是键值
 				console.log(a) //打出的是键名
 		}
-###### Math
-    Js 中有个全局对象，用于普通计算
-    Math常见的几种方法：
-        Math.floor(x)  返回小于x的最大整数
-        Math.ceil(x)  返回大于x的最小整数
-        Math.round(x) 返回四舍五入后的整数
-        Math.random(x) 返回0到1之间的伪随机数
-        Math.cos(x) 返回x的余弦值
-        Math.sin(x) 返回x的正弦值
+
 
 ###### NaN
     NaN 
