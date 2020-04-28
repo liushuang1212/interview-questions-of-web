@@ -39,16 +39,21 @@
             m: 'hah'
         };
         // 判断obj是否是空对象
-        var t = new Date(2013,0,1,10,10,10)
-        console.log(t)
-        var t1 = new Date('Oct27,2016 10:10:12')
-        console.log(t1,typeof (t1))
-        var t3 = new Date().getTime() + 80000
-        console.log(t3,typeof(t3))
-        console.log(new Date(),typeof(new Date()))
+        // var t = new Date(2013,0,1,10,10,10)
+        // console.log(t)
+        // var t1 = new Date('Oct27,2016 10:10:12')
+        // console.log(t1,typeof (t1))
+        // var t3 = new Date().getTime() + 80000
+        // console.log(t3,typeof(t3))
+        // console.log(new Date(),typeof(new Date()))
         
-        var t4 = t1.setMonth(0);
-        console.log(t.getMonth())
+        // var t4 = t1.setMonth(0);
+        // console.log(t.getMonth())
+        var m = Math.ceil(Math.random()*100000000000000).toString().substr(0,4)
+        console.log(typeof(m) )
+        
+        console.log( m + Date.now())    
+               console.log(Date.now(),new Date().getTime())
 
         
 
